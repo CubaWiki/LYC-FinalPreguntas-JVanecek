@@ -590,4 +590,69 @@ Entonces $f(x)$ no es computable.
 
 \tomadoEl{2016-05-09}
 
+\begin{solution}
+
+\begin{itemize}
+ \item[$\Rightarrow)$] Hay un teorema (1) que dice que si $A$ es c.e., existe un predicado $P : \mathbb{N}^2\rightarrow\mathbb{N}$ p.r. tal que $A=\{x : (\exists t)P(x,t)\}$.
+
+    Sea $a\in A$ y definamos la funci\'on p.r. $f$ como 
+
+    $$
+    f(u) = \left\{
+    \begin{array}{cl}
+    l(u) & \mbox{si } P(l(u),r(u)) \\
+    a & \mbox{si no} 
+    \end{array}\right.
+    $$
+
+    Entonces 
+
+    \begin{itemize}
+      \item Si $x\in A \Rightarrow$ existe $t$ tal que $P(x,t) \Rightarrow f(\langle x,t \rangle) = x$
+      \item Sea $x$ tal que $f(u)=x$ para alg\'un $u$. Entonces $x=a$ o bien $u$ es de la forma $u=\langle x,t \rangle$, con $P(x,t)$. Luego $x\in A$.
+    \end{itemize}
+  
+    {\it Demostraci\'on de} (1): Sea $A=\{x : \phi_e(x)\downarrow\}$. Entonces $x\in A$ cuando en alg\'un tiempo $t$, el programa $e$ con entrada $x$ termina, i.e. 
+    
+    $$A=\{x : (\exists t)\text{STP}^{(1)}(x,e,t)\}=\{x : (\exists t)P(x,t)\}$$
+    
+    \item[$\Leftarrow)$] Sea $f : \mathbb{N} \rightarrow \mathbb{N}$ p.c. y $A=\{f(x) : f(x)\downarrow\}$. 
+    
+    Sea $\phi_p=f$. Definimos el programa $Q$ como
+    
+    \vspace{0.5cm}
+    \begin{tabular}{rl}
+      $[A]$ & IF STP$^{(1)}(Z,p,T)=0$ GOTO $B$ \\
+	    & IF $\phi_p(Z)=X$ GOTO $E$\\
+      $[B]$ & $Z\leftarrow Z+1$\\
+	    & IF $Z\leq T$ GOTO $A$\\
+	    & $T\leftarrow T+1$\\
+	    & $Z\leftarrow 0$\\
+	    & GOTO $A$\\
+    \end{tabular}
+    \vspace{0.5cm}
+    
+    Notar que $\Psi_Q(X)\downarrow$  si existen $Z,T$ tal que
+    
+    \begin{itemize}
+      \item $Z\leq T$
+      \item STP$^{(1)}(Z,p,T)$ es verdadero (es decir, el programa que computa $f$ termina en $T$ o menos pasos con entrada $Z$)
+      \item $X=f(Z)$
+    \end{itemize}
+    
+    Es decir, 
+    
+    $$
+    \Psi_Q(x) = \left\{
+    \begin{array}{cl}
+    0 & \mbox{si } x\in A \\
+    \uparrow & \mbox{si no} 
+    \end{array}\right.
+    $$
+    
+    Luego $A$ es c.e.
+\end{itemize}
+
+\end{solution}
+
 \end{questions}

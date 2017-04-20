@@ -16,11 +16,19 @@
  {\it Def. } Un conjunto $\Gamma\subseteq$FORM es consistente si no existe $\varphi\in$FORM tal que $\Gamma\vdash\varphi$ y $\Gamma\nvdash\varphi$.
  
  {\it Def. } Un conjunto $\Gamma\subseteq$FORM es maximal consistente en SP si es consistente y para toda f\'ormula $\varphi$: o bien $\varphi\in\Gamma$, o existe $\psi$ tal que $\Gamma\cup\{\varphi\}\vdash\psi$ y $\Gamma\cup\{\varphi\}\nvdash\psi$.
-
+  
+ Para demostrar ambos puntos voy a usar una proposici\'on que dice 
+ 
+ \begin{equation*}
+  \Gamma\cup\{\neg\varphi\} \text{ es inconsistente sii } \Gamma\vdash\varphi
+ \end{equation*}
+ 
+ (Demostraci\'on en el ejercicio 7 de esta secci\'on)
+ 
  \begin{enumerate}[a)]
   \item No puede ser que $\varphi$ y $\neg\varphi$ est\'en en $\Gamma$ porque  ser\'ia inconsistente.
   
-  Supongamos que ninguna est\'a. Como $\Gamma$ es maximal y por proposici\'on ($\Gamma\cup\{\neg\varphi\}$ es inconsistente sii $\Gamma\vdash\varphi$): 
+  Supongamos que ninguna est\'a. Como $\Gamma$ es maximal y por la proposici\'on.
   
   \begin{itemize}
    \item $\Gamma\cup\{\varphi\}$ es inconsistente $\Rightarrow \Gamma\vdash\neg\varphi$
@@ -33,7 +41,7 @@
   
   \begin{itemize}
    \item[$\Rightarrow$)] Trivial porque o bien $\varphi$ es axioma o consecuencia inmediata de $\Gamma$ y por lo tanto $\forall v, v\vDash\varphi$. 
-   \item[$\Leftarrow$)] Por el absurdo, asumimos que $\Gamma\vdash\varphi$ y $\varphi\notin\Gamma$. (Me corrigieron que era una hip\'otesis absurda)
+   \item[$\Leftarrow$)] Por la proposici\'on, $\Gamma\vdash\varphi \Rightarrow \Gamma\cup\{\neg\varphi\}$ es inconsistente. Pero $\Gamma$ es maximal consistente, luego por punto a) pasa que $\varphi\in\Gamma$.
   \end{itemize}
 
  \end{enumerate}
